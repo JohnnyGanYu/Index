@@ -1,43 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int rw( FILE *fp, int t);
+// 函数声明
+void write_to_file(const char *filename, int value);
+int read_from_file(const char *filename);
 
 int main()
 {
-    int i, o;
+    int input_value;
 
-    FILE *fp1 = NULL, *fp2 = NULL;
-    fp1 = fopen("t1.txt","w+");
-     if  ( fp1 ){
-            scanf("%d", &i);
-            o=rw(fp1, i);
-     }else{
-        printf("文件打开失败");
-        exit(0);
-    }
+    // 从键盘读取数字
+    printf("请输入一个整数: ");
+    scanf("%d", &input_value);
 
-    fp2 = fopen("t2.txt","w+");
-     if  ( fp2 ){
-            i = o + 100;
-            o=rw(fp2, i);
-            printf("%d", o);
-     }else{
-        printf("文件打开失败");
-        exit(0);
-    }
+    // 保存到t1.txt
+    write_to_file("t1.txt", input_value);
 
+    // 从t1.txt读取数字
+    int read_value = read_from_file("t1.txt");
+
+    // 加100后保存到t2.txt
+    write_to_file("t2.txt", read_value + 100);
+
+    printf("处理完成！\n");
+    printf("流程：键盘输入(%d) -> t1.txt(%d) -> t2.txt(%d)\n",
+           input_value, read_value, read_value + 100);
 
     return 0;
 }
 
-int rw( FILE *fp, int t)
+// 函数：写入数字到文件
+void write_to_file(const char *filename, int value)
 {
-    fprintf(fp, "%d", t);
-    fseek(fp, 0, SEEK_SET);
-    fscanf(fp, "%d", &t);
-    //printf("%d", t);
+    FILE *fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("%s文件打开失败\n", filename);
+        exit(1);
+    }
+    fprintf(fp, "%d", value);
     fclose(fp);
+}
 
-    return t;
+// 函数：从文件读取数字
+int read_from_file(const char *filename)
+{
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("%s文件打开失败\n", filename);
+        exit(1);
+    }
+    int value;
+    fscanf(fp, "%d", &value);
+    fclose(fp);
+    return value;
 }
