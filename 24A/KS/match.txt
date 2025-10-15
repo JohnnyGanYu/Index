@@ -1,0 +1,12 @@
+A Qatar Ecuador 0 2
+A Senegal Holland 0 2
+A Qatar Senegal 1 3
+A Holland Ecuador 1 1
+A Holland Qatar 2 0
+A Ecuador Senegal 1 2
+B England Iran 6 2
+B USA Wales 1 1
+B Wales Iran 0 2
+B England USA 0 0
+B Wales England 0 3
+B Iran USA 0 1
