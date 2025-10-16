@@ -1,0 +1,8 @@
+A Holland    5/1   2/1/0   7   1
+A Senegal    5/4   2/0/1   6   2
+A Ecuador    4/3   1/1/1   4   3
+A Qatar	    1/7   0/0/3   0   4
+B England    9/2   2/1/0   7   1
+B USA	    2/1   1/2/0   5   2
+B Iran	    4/7   1/0/2   3   3
+B Wales	    1/6   0/1/2   1   4
