@@ -41,11 +41,6 @@ void insertNode(struct Book **head, char isbn[],
         *head = p;
         i = 1;
     }
-    else if (current -> next == NULL)
-    {
-        current -> next = p;
-        i = 1;
-    }
     else while (!i)
     {
         pre = current;
@@ -96,7 +91,7 @@ int deleteNode(struct Book **head, char isbn[])
             free(current);
             i = 1;
         }
-    while (!i && current)
+    else while (!i && current)
     {
         if (strcmp(current -> isbn, isbn) == 0)
         {
