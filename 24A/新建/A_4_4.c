@@ -43,8 +43,6 @@ void insertNode(struct Book **head, char isbn[],
     }
     else while (!i)
     {
-        pre = current;
-        current = current -> next;
         if (strcmp(current -> isbn, isbn) == 0)
         {
             free(p);
@@ -61,6 +59,8 @@ void insertNode(struct Book **head, char isbn[],
             current -> next = p;
             i = 1;
         }
+        pre = current;
+        current = current -> next;
     }
 
     if (i == 1)
@@ -140,6 +140,11 @@ void searchNode(struct Book *head, char key[])
     return;
 }
 
+void releaseList(struct Book *head)
+{
+    struct Book
+}
+
 void saveList(struct Book *head)
 {
     struct Book *current = head;
@@ -150,7 +155,10 @@ void saveList(struct Book *head)
     }
     while (current != NULL)
     {
-        fwrite(current, sizeof *current, 1, fp);
+        fwrite(current->isbn, sizeof(char), 20, fp);
+        fwrite(current->name, sizeof(char), 20, fp);
+        fwrite(current->author, sizeof(char), 20, fp);
+        fwrite(&(current->price), sizeof(float), 1, fp);
         current = current -> next;
     }
     fclose(fp);
@@ -161,20 +169,21 @@ int main(void)
 {
     printf("===== 图书管理系统 =====\n");
     int i = 0;
+    char isbn[20];
+    char name[20];
+    char author[20];
+    char key[20];
+    float price;
     struct Book *head = NULL;
     while(4-i)
     {
-        char isbn[20];
-        char name[20];
-        char author[20];
-        char key[20];
-        float price;
         printf("1. 添加图书\n"
                "2. 删除图书\n"
                "3. 模糊查询\n"
                "4. 保存并退出\n"
                "请输入你的选择（1-4）：");
         scanf("%d", &i);
+        while (getchar() != '\n');
         switch (i)
         {
         case 1:
@@ -201,6 +210,8 @@ int main(void)
         case 4:
             saveList(head);
             break;
+        default:
+            printf("请输入正确数字！\n");
         }
     }
     return 0;
