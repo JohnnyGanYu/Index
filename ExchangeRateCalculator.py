@@ -120,26 +120,5 @@ def main():
         except Exception as e:
             print(f"发生错误: {e}")
 
-# 直接使用的函数版本
-def simple_currency_convert(amount, from_currency, to_currency):
-    """
-    简易外汇转换函数
-    
-    参数:
-    amount: 要兑换的金额
-    from_currency: 原货币代码
-    to_currency: 目标货币代码
-    
-    返回:
-    转换后的金额
-    """
-    converter = CurrencyConverter()
-    result = converter.convert_currency(amount, from_currency, to_currency)
-    
-    if isinstance(result, dict):
-        return result['converted_amount']
-    else:
-        return result
-
 if __name__ == "__main__":
     main()
