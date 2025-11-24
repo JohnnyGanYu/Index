@@ -10,14 +10,13 @@ int main(void)
         int n;
         cin >> n;
         cin.ignore();
-        do
+        char s;
+        while ( (s = getchar()) != '\n' )
         {
-            char s;
-            s = getchar();
             cout << s;
             while ( s != getchar());
         }
-        while ( getchar() != '\n' );
+        
         cout << endl;
     }
     return 0;
