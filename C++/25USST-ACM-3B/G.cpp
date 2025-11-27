@@ -32,7 +32,7 @@ int main(void)
     {
         long long n;
         cin >> n;
-        cin.ignore(5,'\n');
+        cin.ignore(20,'\n');
         weathers weather[n];
         long long b[n];
         for( long long j = 0; j < n; j++)
