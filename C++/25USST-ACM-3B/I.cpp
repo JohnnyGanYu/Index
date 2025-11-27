@@ -13,25 +13,29 @@ int main()
        {
             if ( i % 2 == 0 )
             {
-                cout << n - i;
+                cout << 2 * n - i - 1;
             }
             else
             {
                 cout << i;
             }
+            cout << ' ';
        } 
        cout << endl;
-       for ( int i = 0; i < n; i++ )
+       for ( int i = 0; i < n - 1; i++ )
        {
-            if ( i % 2 == 0 )
+            if ( i % 2 != 0 )
             {
-                cout << n - i;
+                cout << 2 * n - i - 1;
             }
             else
             {
-                cout << i;
+                cout << i + 2;
             }
+            cout << ' ';
        } 
+       cout << 2 * n;
+       cout << endl;
     }
     
 
