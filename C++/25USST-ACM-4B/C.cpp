@@ -2,46 +2,25 @@
 #include <cmath>
 using namespace std;
 
-int main(void)
-{
+int main() {
     int t;
     cin >> t;
-    while (t--)
-    {
-        int n, m, q;
-        cin >> n >> m >> q;
-        int b[m];
-        for (int i = 0; i < m; i++)
-        {
-            cin >> b[i];
+    while (t--) {
+        long long n, m, q;
+        cin >> n >> m >> q; // m=2, q=1
+        long long b1, b2;
+        cin >> b1 >> b2;
+        long long a;
+        cin >> a;
+        long long L = min(b1, b2);
+        long long R = max(b1, b2);
+        if (a > L && a < R) {
+            cout << (R - L) / 2 << endl;
+        } else if (a < L) {
+            cout << L - 1 << endl;
+        } else { // a > R
+            cout << n - R << endl;
         }
-        int a;
-        for (int i = 0; i < q; i++)
-        {
-            cin >> a;
-        }
-        int l1 = b[0] - a;
-        int l2 = b[1] - a;
-        if(l1 * l2 < 0)
-        {
-            cout << abs(l1-l2) << endl;
-        }
-        else
-        {
-            if (l1 > 0)
-            {
-                cout << (l1>l2)?b[1]:b[0] << endl;
-            }
-            else
-            {
-                cout << (l1>l2)?(n-b[1]):(n-b[0]) << endl;
-            }
-            
-            
-        }
-        
-        
     }
-    
     return 0;
 }
