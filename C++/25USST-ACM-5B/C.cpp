@@ -10,12 +10,14 @@ int main() {
         cin >> l >> r >> L >> R;
         int x = max(l, L);
         int y = min(r, R);
-        if (x > y) {
-            n++;
-        } else if (x == y) {
-            n++;
-        } else {
-            
+        if (x <= y) {
+            n += y - x +1;
+        }
+        if (l==L) {
+            n--;
+        }
+        if (r== R) {
+            n--;
         }
         cout << n << endl;
     }
