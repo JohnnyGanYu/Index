@@ -1,40 +1,32 @@
 #include <iostream>
-#include <algorithm>
+#include <vector>
 using namespace std;
-using ll = long long;
-
-void solve() {
-    ll n, P, l, t;
-    cin >> n >> P >> l >> t;
-
-    ll m = (n + 6) / 7;
-
-    ll left = 0, right = n, ans = n;
-    while (left <= right) {
-        ll mid = (left + right) / 2; 
-        
-        ll tasks_done = min(m, 2 * mid);
-        ll score = mid * l + tasks_done * t;
-        
-        if (score >= P) {
-            ans = mid;         
-            right = mid - 1;
-        } else {
-            left = mid + 1;    
-        }
-    }
-
-    cout << n - ans << endl;
-}
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    int t;
+    cin >> t;
     
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        solve();
+    while (t--) {
+        int n;
+        cin >> n;
+        
+        vector<int> degree(n + 1, 0);
+        
+        for (int i = 0; i < n - 1; i++) {
+            int u, v;
+            cin >> u >> v;
+            degree[u]++;
+            degree[v]++;
+        }
+        
+        int leaf_count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (degree[i] == 1) {
+                leaf_count++;
+            }
+        }
+
+        cout << (leaf_count + 1) / 2 << "\n";
     }
     
     return 0;
